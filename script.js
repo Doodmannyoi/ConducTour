@@ -1,8 +1,6 @@
 $(document).on("click", "#speak", init);
 
-// Text-Based Adventure ChatBot Code
 function init() {
-
     $("#speak").prop("disabled", true);
     $("#speak").text("Speaking ...");
     $("#speak").addClass("btn-outline-danger");
@@ -32,25 +30,18 @@ function init() {
         $("#submit").click();
         console.log(`Confidence: ${event.results[0][0].confidence}`);
     };
-
 }
-
-
 
 $(document).on("click", "#submit", send);
 
 function send() {
-
     var text = $("#query").val();
 
     if (text == "") {
-
         alert("Write something!");
-
     } else {
-
         $("#output").prepend("<br />");
-        $("#output").prepend("[😶] " + text);
+        $("#output").prepend("[🙂] " + text);
         $("#query").val("");
 
         $("#submit").prop("disabled", true);
@@ -66,7 +57,7 @@ function send() {
                 'messages': [
                     {
                         'role': 'system',
-                        'content': 'You are my expert advisor specialized in George Brown College. Only speak to me in English, and keep the response to one or two sentences max.'
+                        'content': 'You are my expert advisor specialized in the George Brown College School of Design. Only speak to me in English, and keep the response to one or two sentences max.'
                     },
                     {
                         'role': 'user',
@@ -79,22 +70,20 @@ function send() {
                 ]
             })
         }).done(function (response) {
-
             $("#submit").prop("disabled", false);
             $("#submit").text("Submit");
 
             var reply = response.choices[0].message.content;
 
             $("#output").prepend("<br />");
-            $("#output").prepend("[🧙‍♂️] " + reply);
+            $("#output").prepend("[🪙] " + reply);
 
-            const synth = window.speechSynthesis;
-            const utterThis = new SpeechSynthesisUtterance(reply);
-            utterThis.pitch = 1;
-            utterThis.rate = 1;
-            synth.speak(utterThis);
+            const apiKey = document.getElementById('api-key-input').value;
+            const voiceId = document.getElementById('voice-id-input').value;
 
+            getElevenLabsSpeech(reply, apiKey, voiceId, function(audioUrl) {
+                playAudio(audioUrl);
+            });
         });
-
     }
 }
