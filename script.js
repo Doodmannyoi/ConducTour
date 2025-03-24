@@ -1,5 +1,7 @@
 $(document).on("click", "#speak", init);
 
+let recognition;
+
 function init() {
     $("#speak").prop("disabled", true);
     $("#speak").text("Speaking ...");
@@ -13,7 +15,7 @@ function init() {
     const SpeechRecognitionEvent =
         window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent;
 
-    const recognition = new SpeechRecognition();
+    recognition = new SpeechRecognition();
     const speechRecognitionList = new SpeechGrammarList();
 
     recognition.grammars = speechRecognitionList;
@@ -30,6 +32,16 @@ function init() {
         $("#submit").click();
         console.log(`Confidence: ${event.results[0][0].confidence}`);
     };
+}
+
+function resetSpeakButton() {
+    if (recognition) {
+        recognition.stop();
+    }
+    $("#speak").prop("disabled", false);
+    $("#speak").text("Speak");
+    $("#speak").removeClass("btn-outline-danger");
+    $("#speak").addClass("btn-outline-primary");
 }
 
 $(document).on("click", "#submit", send);
@@ -84,6 +96,8 @@ function send() {
             getElevenLabsSpeech(reply, apiKey, voiceId, function(audioUrl) {
                 playAudio(audioUrl);
             });
+
+            resetSpeakButton(); // Reset the speak button after processing the response
         });
     }
 }
