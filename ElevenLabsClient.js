@@ -1,8 +1,11 @@
+// Rachael voice
+// https://api.elevenlabs.io/v1/text-to-speech/2Q0r7v4c3k5x6g8z9d3b/stream
+
 // A class that manages speech synthesis through an external API
 class SpeechManager {
     // The constructor initializes the class with the API domain and sets up some state variables
     constructor(apiDomain, status) {
-        this.apiDomain = "sk_dba4ed9666654381fd3aecccfcc95a4dd67f669d0351c0ce";  // The domain of the API to fetch speech from
+        this.apiDomain = "sk_3ad5ce9b6ad8de9ba20f7dd6bad9d819e5e4460bbf3622d9";  // The domain of the API to fetch speech from
         this.currentAudio = null;  // The Audio object of the currently playing speech
         this.queue = [];  // A queue of speech tasks
         this.voicing = true;  // A flag indicating whether speech synthesis is currently allowed

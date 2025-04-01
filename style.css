@@ -1,0 +1,47 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+}
+
+document.ondblclick = function (e) {
+    e.preventDefault();
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    height: 100%;
+    overflow: hidden;
+}
+
+.button {
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+    font-size: small;
+    border-radius: 100%;
+}
+
+.chatbotButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.langButton {
+    float: left;
+    left: 0;
+    top: 0;
+}
+
+#chatbotUI,#langUI {
+    display: none; /* Hide the chatbotUI by default */
+}
