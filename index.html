@@ -25,22 +25,8 @@
     <!-- ELEVENLABS -->
     <script src="ElevenLabsClient.js"></script>
 
-    <!-- ANNYANG
-    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
-    <script>
-        if (annyang) {
-            // Let's define a command.
-            const commands = {
-                'hello': () => { alert('Hello world!'); }
-            };
-
-            // Add our commands to annyang
-            annyang.addCommands(commands);
-
-            // Start listening.
-            annyang.start();
-        }
-    </script> -->
+    <!-- ELEVENLABS CONVERSATIONAL AI -->
+    <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
 
 </head>
 
@@ -85,6 +71,9 @@
             </div>
         </div>
     </div>
+
+    <!-- ElevenLabs Conversational AI Widget -->
+    <elevenlabs-convai agent-id="E6DqXUDdsaOnBxXig4OU"></elevenlabs-convai>
 
     <!-- Hidden inputs for API key and voice ID -->
     <input type="password" disabled hidden id="api-key-input"
